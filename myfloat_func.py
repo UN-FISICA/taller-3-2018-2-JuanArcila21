@@ -262,6 +262,25 @@ def multiplicacion(a,b):
         a0.insert(0,"+")
     final=(a0,a1)
     return(final)
+def comparacion(c,d):
+    a=[c[0],c[1]]
+    b=[d[0],d[1]]
+    if min(len(a[1]),len(b[1]))==len(a[1]):
+        for i in range(len(b[1])-len(a[1])):
+            a[1].append(0)
+    if min(len(a[1]),len(b[1]))==len(b[1]):
+        for i in range(len(a[1])-len(b[1])):
+            b[1].append(0)
+    if min(len(a[0]),len(b[0]))==len(a[0]):
+        for i in range(len(b[0])-len(a[0])):
+            a[0].insert(1,0)
+    if min(len(a[0]),len(b[0]))==len(b[0]):
+        for i in range(len(a[0])-len(b[0])):
+            b[0].insert(1,0)
+    if a[0]==b[0] and a[1]==b[1]:
+        return True
+    else:
+        return False
 def pi():
     uno=(["+",1],[0])
     muno=(["-",1],[0])

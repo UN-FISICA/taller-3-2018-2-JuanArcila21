@@ -566,29 +566,18 @@ class MyFloat:
     def __lt__(self,other):
         return other>self.longitud()
     
-resultado=MyFloat([["+",0],[0]])
-k=0
-while resultado<20:
-    denominador=2*k+1
-    if k%2==0:
-        resultado=MyFloat(resultado+(4/denominador))
-    else:
-        resultado=MyFloat(resultado+(-4/denominador))
-    print (resultado)
-    k+=1
 
 
-if __name__ != "__main__":
+if __name__ == "__main__":
     # Escribir aca el codigo para calcular pi. Al finalizar el calculo solo
     # debe imprimir el valor de pi, sin otros textos ni nada
     resultado=MyFloat([["+",0],[0]])
-    s=resultado.longitud()
     k=0
-    while s!=30:
+    while resultado<20:
         denominador=2*k+1
         if k%2==0:
-            resultado=resultado+(4/denominador)
+            resultado=MyFloat(resultado+(4/denominador))
         else:
-            resultado=resultado+(-4/denominador)
+            resultado=MyFloat(resultado+(-4/denominador))
         k+=1
     print (resultado)

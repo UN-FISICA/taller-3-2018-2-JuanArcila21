@@ -560,18 +560,16 @@ class MyFloat:
             else:
                 return(True)
        
-if __name__ == "_main_":
+if __name__ == "__main__":
     # Escribir aca el codigo para calcular pi. Al finalizar el calculo solo
     # debe imprimir el valor de pi, sin otros textos ni nada
-    sumatoria=0
-    k=MyFloat((["+",0],[0]))
-    r=-1
-    for con in range(1000):
-        signo=r*(-1)
-        r=signo
-        indice=MyFloat(k+con)
-        denominador=MyFloat(MyFloat(2*indice)+1)
-        resultado=MyFloat(signo/denominador)
-        sumatoria=MyFloat(sumatoria+resultado)
-    pi=MyFloat(4*sumatoria)      
-    print(pi)
+    resultado=0
+    k=0
+    while k<1000000:
+        denominador=2*k+1
+        if k%2==0:
+            resultado=resultado+(4/denominador)
+        else:
+            resultado=resultado-(4/denominador)
+        k+=1
+    print (resultado)

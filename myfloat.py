@@ -29,16 +29,18 @@ def suma(c,d):
         resultado[0]=sumacorregida[0]
         resultado[1]=sumacorregida[1]
         resultadoentupla=(resultado[0],resultado[1])
+        resultadoenlista=[resultado[0],resultado[1]]
         a[0][0]="-"
-        return resultadoentupla
+        return resultadoenlista
     elif b[0][0]=="-":
         b[0][0]="+"
         sumacorregida=resta(a,b)
         resultado[0]=sumacorregida[0]
         resultado[1]=sumacorregida[1]
         resultadoentupla=(resultado[0],resultado[1])
+        resultadoenlista=[resultado[0],resultado[1]]
         b[0][0]="-"
-        return resultadoentupla
+        return resultadoenlista
 
     else:
         sobra=0
@@ -58,7 +60,8 @@ def suma(c,d):
 
         resultado[0].insert(0,"+")
         resultadoentupla=(resultado[0],resultado[1])
-        return resultadoentupla
+        resultadoenlista=[resultado[0],resultado[1]]
+        return resultadoenlista
     
 
 def resta(c,d):   
@@ -146,7 +149,8 @@ def resta(c,d):
                     resultado[0].insert(0,int(str(a[0][-i-1]-b[0][-i-1]))) 
             resultado[0].insert(0,"-")
     resultadoentupla=(resultado[0],resultado[1])
-    return resultadoentupla
+    resultadoenlista=[resultado[0],resultado[1]]
+    return resultadoenlista
     
 def multiplicacion(a,b):
     if (a[0][0]=="-" and b[0][0]=="+") or (a[0][0]=="+" and b[0][0]=="-"):
@@ -302,8 +306,7 @@ class MyFloat:
 
     def __init__(self,a):
         self.a=a
-
-
+        self.a1=a[1]
     def __add__(self,other):
         if type(other)==int or type(other)==float:
             c=[[],[]]
@@ -320,7 +323,7 @@ class MyFloat:
                     c[0].append(int(d[i]))
                 z=len(d)-d.index(".")
                 for l in range(z-1):
-                    c[1].insert(0,int(d[-l-1]))
+                    c[1].insert(0,int(float(d[-l-1])))
                     
             
             if other<0:
@@ -524,7 +527,6 @@ class MyFloat:
             return(comparacion(self.a,c))
         else:
             return(comparacion(self.a,other.a))
-
     def __ne__(self,other):
         if type(other)==int or type(other)==float:
             c=[[],[]]
@@ -559,17 +561,34 @@ class MyFloat:
                 return(False)
             else:
                 return(True)
-       
-if __name__ == "__main__":
+    def longitud(self):
+        return (len(self.a1))
+    def __lt__(self,other):
+        return other>self.longitud()
+    
+resultado=MyFloat([["+",0],[0]])
+k=0
+while resultado<20:
+    denominador=2*k+1
+    if k%2==0:
+        resultado=MyFloat(resultado+(4/denominador))
+    else:
+        resultado=MyFloat(resultado+(-4/denominador))
+    print (resultado)
+    k+=1
+
+
+if __name__ != "__main__":
     # Escribir aca el codigo para calcular pi. Al finalizar el calculo solo
     # debe imprimir el valor de pi, sin otros textos ni nada
-    resultado=0
+    resultado=MyFloat([["+",0],[0]])
+    s=resultado.longitud()
     k=0
-    while k<1000000:
+    while s!=30:
         denominador=2*k+1
         if k%2==0:
             resultado=resultado+(4/denominador)
         else:
-            resultado=resultado-(4/denominador)
+            resultado=resultado+(-4/denominador)
         k+=1
     print (resultado)
